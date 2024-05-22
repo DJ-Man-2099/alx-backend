@@ -19,7 +19,8 @@ class LRUCache(BaseCaching):
         """
         if key and item:
             # print(f"self.access_count on put: {self.access_time}")
-            if len(self.cache_data.keys()) == BaseCaching.MAX_ITEMS:
+            if key not in self.cache_data.keys() and\
+                    len(self.cache_data.keys()) == BaseCaching.MAX_ITEMS:
                 min_access = min(self.access_time.values())
                 key_to_discard = list(filter(lambda k: self.access_time[k] ==
                                              min_access,
