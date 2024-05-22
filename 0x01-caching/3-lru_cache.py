@@ -18,8 +18,6 @@ class LRUCache(BaseCaching):
         the item value for the key key
         """
         if key and item:
-            self.cache_data[key] = item
-            self.access(key)
             # print(f"self.access_count on put: {self.access_time}")
             if len(self.cache_data.keys()) > BaseCaching.MAX_ITEMS:
                 min_access = min(self.access_time.values())
@@ -29,6 +27,8 @@ class LRUCache(BaseCaching):
                 print(f"DISCARD: {key_to_discard}")
                 del self.cache_data[key_to_discard]
                 del self.access_time[key_to_discard]
+            self.cache_data[key] = item
+            self.access(key)
 
     def get(self, key):
         """return the value in self.cache_data
