@@ -19,8 +19,8 @@ class LFUCache(BaseCaching):
         the item value for the key key
         """
         if key and item:
-            print(f"self.access_time on put: {self.access_time}")
-            print(f"self.access_count on put: {self.access_count}")
+            # print(f"self.access_time on put: {self.access_time}")
+            # print(f"self.access_count on put: {self.access_count}")
             if key not in self.cache_data.keys() and\
                     len(self.cache_data.keys()) == BaseCaching.MAX_ITEMS:
                 # LFU
