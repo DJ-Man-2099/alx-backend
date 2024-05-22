@@ -46,6 +46,6 @@ class LRUCache(BaseCaching):
         return None
 
     def access(self, key):
-        """sets access for recently used algorithms"""
+        """sets access(get or put) for recently used algorithms"""
         last_access = max(self.access_time.values()) if self.access_time else 0
         self.access_time[key] = last_access + 1
