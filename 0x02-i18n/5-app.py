@@ -51,12 +51,13 @@ def get_user(login_as: str) -> Optional[Dict[str, str]]:
     try:
         login_as = int(login_as)
         return users.get(login_as)
-    except:
+    except Exception:
         pass
 
 
 @app.before_request
 def before_request():
+    """ gets User from query params """
     login_as = request.args.get('login_as')
     g.user = get_user(login_as)
 
