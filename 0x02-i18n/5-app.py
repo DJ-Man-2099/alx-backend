@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module for Second Flask Task """
 
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 from flask import Flask, g, render_template, request
 from flask_babel import Babel
 
@@ -44,22 +44,20 @@ def get_locale() -> Optional[str]:
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-def get_user(login_as: str) -> Optional[Dict[str, str]]:
-    """ returns a user dictionary or
-    None if the ID cannot be found or
-    if login_as was not passed """
-    try:
-        login_as = int(login_as)
-        return users.get(login_as)
-    except Exception:
-        pass
+def get_user() -> Union[dict, None]:
+    '''returns a user dictionary or None'''
+    if request.args.get('login_as'):
+        user = int(request.args.get('login_as'))
+        if user in users:
+            return users.get(user)
+    else:
+        return None
 
 
 @app.before_request
 def before_request():
-    """ gets User from query params """
-    login_as = request.args.get('login_as')
-    g.user = get_user(login_as)
+    '''to find a user if any'''
+    g.user = get_user()
 
 
 if __name__ == '__main__':
