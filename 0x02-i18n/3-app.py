@@ -21,15 +21,13 @@ babel = Babel(app)
 
 @app.route('/', strict_slashes=False)
 def home_route() -> str:
-    """ simply outputs “Welcome to Holberton” as page title (<title>)
-    and “Hello world” as header (<h1>)
-    """
+    """ / page """
     return render_template('3-index.html')
 
 
 @babel.localeselector
 def get_locale() -> Optional[str]:
-    """ Get locale from request """
+    """ determine the best match with our supported languages """
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
