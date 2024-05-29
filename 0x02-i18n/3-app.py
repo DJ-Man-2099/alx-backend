@@ -7,7 +7,8 @@ from flask_babel import Babel, _
 
 
 class Config():
-    """ Config class for app """
+    """a Config class that has a LANGUAGES class attribute
+    equal to ["en", "fr"]"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = LANGUAGES[0]
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -28,7 +29,7 @@ def home_route() -> str:
 
 @babel.localeselector
 def get_locale() -> Optional[str]:
-    """ determine the best match with our supported languages """
+    """ Get locale from request """
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
