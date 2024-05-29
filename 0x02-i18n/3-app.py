@@ -3,7 +3,7 @@
 
 from typing import Optional
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel
 
 
 class Config():
@@ -28,7 +28,7 @@ def home_route() -> str:
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale() -> Optional[str]:
     """ determine the best match with our supported languages """
     return request.accept_languages.best_match(Config.LANGUAGES)
 
