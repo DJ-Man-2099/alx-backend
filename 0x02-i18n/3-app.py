@@ -23,7 +23,7 @@ babel = Babel(app)
 def home_route() -> str:
     """simply outputs “Welcome to Holberton” as page title (<title>)
     and “Hello world” as header (<h1>)"""
-    return render_template('1-index.html', title=_("home_title"),
+    return render_template('3-index.html', title=_("home_title"),
                            header=_("home_header"))
 
 
