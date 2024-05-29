@@ -28,7 +28,7 @@ def home_route() -> str:
 
 @babel.localeselector
 def get_locale() -> Optional[str]:
-    """"""
+    """determine the best match with our supported languages"""
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
