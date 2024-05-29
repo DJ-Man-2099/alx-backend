@@ -55,11 +55,11 @@ def get_get_timezone() -> Optional[str]:
     try:
         query_local = request.args.get("get_timezone")
         if query_local is not None:
-            return pytz.timezone(query_local)
+            return pytz.timezone(query_local).zone
         if g.user is not None:
             user_get_timezone = g.user.get("get_timezone")
             if user_get_timezone is not None:
-                return pytz.timezone(user_get_timezone)
+                return pytz.timezone(user_get_timezone).zone
     except pytz.exceptions.UnknownTimeZoneError:
         pass
     finally:
