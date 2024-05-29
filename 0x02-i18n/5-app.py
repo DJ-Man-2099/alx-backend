@@ -50,7 +50,7 @@ def get_user(login_as: str) -> Optional[Dict[str, str]]:
     if login_as was not passed """
     try:
         login_as = int(login_as)
-        return users.get(login_as)
+        return users.get(login_as, None)
     except Exception:
         pass
 
