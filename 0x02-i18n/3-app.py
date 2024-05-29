@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Module for Second Flask Task """
+""" 2. get local from request """
 
 from typing import Optional
 from flask import Flask, render_template, request
