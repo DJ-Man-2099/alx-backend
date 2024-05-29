@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 2. get local from request """
+""" Module for Second Flask Task """
 
 from typing import Optional
 from flask import Flask, render_template, request
@@ -7,8 +7,7 @@ from flask_babel import Babel, _
 
 
 class Config():
-    """a Config class that has a LANGUAGES class attribute
-    equal to ["en", "fr"]"""
+    """ Config class for app """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = LANGUAGES[0]
     BABEL_DEFAULT_TIMEZONE = "UTC"
