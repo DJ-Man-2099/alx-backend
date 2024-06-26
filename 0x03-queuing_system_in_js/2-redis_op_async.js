@@ -17,7 +17,7 @@ const displaySchoolValue = async (schoolName) => {
       console.log(result);
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
